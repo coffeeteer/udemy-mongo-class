@@ -4,11 +4,26 @@
 	<title>Click! (HTML Game)</title>
 </head>
 <body>
-		<button>Click!</button>
+	<button>Click ME!!!!</button>
+	<script type="text/javascript">
+		let counter = 0;
 
-		<script type="text/javascript">
-			console.log('The game is starting!')
-		</script>
+		var el = document.querySelector('button');
 
-</body>
+		if (el){	
+			el.addEventListener('click', () => {
+				++counter;
+			});
+		}
+
+		setTimeout(() => {
+			if(counter > 5) {
+				alert(`You Won! Your clicks ${counter}`);
+			}	else {
+				alert('Sorry, too slow.');
+			}
+		},  2000);
+	</script>
+
+	</body>	
 </html>
