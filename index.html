@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <button>Click!</button>
+        <script type="text/javascript" >
+            function startGame(){
+                let counter = 0;
+                
+                document.querySelector('button').addEventListener('click', () => {
+                    ++counter;
+                });
+                
+                setTimeout(() => {
+                    if (counter > 5) {
+                        console.log('You\'ve won! Your clicks ' + counter);
+                    } else {
+                        console.log('Sorry you\'ve lost!');
+                    }
+                }, 2000);
+            }
+            
+            startGame();
+        </script>
+    </body>
+</html>
