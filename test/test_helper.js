@@ -7,3 +7,11 @@ const db = mongoose.connection
     .once('open', function(){
        console.log('You have connected to mongoose') 
     });
+
+beforeEach((done) => {
+	// Clear out our users beforeEach test
+	// There is only be one instance of a user
+	mongoose.connection.collections.users.drop(() => {
+		done();
+	});
+});    
