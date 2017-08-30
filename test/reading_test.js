@@ -8,12 +8,13 @@ describe('reading users out of the database', () => {
 		joe = new User({ name: 'Joe' })
 		joe.save()
 			.then(() => done());
-	})
+	});
 
 	it('finds all users with the name of joe', (done) => {
 		User.find({ name: 'Joe' })
 			.then((users) => {
-				console.log(users);
+				// The toString() method has to be called otherwise it won't work.
+				assert(users[0]._id.toString() === joe._id.toString());
 				done();
 			});
 	});
