@@ -4,7 +4,11 @@ const Schema = mongoose.Schema;
 const UserSchema = new Schema({
    name: {
    	type: String,
-   	require: [true, 'Name is required']
+   	validate: {
+   		validator: (name) => name.length > 2,
+   		message: 'Name must be longer than two characters' 
+   	},
+   	required: [true, 'Name is required.']
    },
    postCount: Number
 });
