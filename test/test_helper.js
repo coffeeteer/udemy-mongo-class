@@ -13,17 +13,16 @@ before((done) => {
 	    });
 });
 
-beforeEach((done) => {
-	const users = mongoose.connection.collections;
-	const comment = mongoose.connection.collections;
-	const blogPosts = mongoose.connection.collections;
 	// Clear out our users beforeEach test
 	// There is only be one instance of a user
-	users.drop(() => {
-		comments.drop(() => {
-			blogPosts.drop(() => {
-				done();
-			});
-		});
-	});
-});    
+beforeEach((done) => {
+  const { users, comments, blogposts } = mongoose.connection.collections;
+  users.drop(() => {
+    comments.drop(() => {
+      blogposts.drop(() => {
+        done();
+      });
+    });
+  });
+});  	
+
