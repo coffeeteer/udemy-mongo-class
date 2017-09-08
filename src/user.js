@@ -15,6 +15,7 @@ const UserSchema = new Schema({
 	likes: Number,
 	blogPosts: [{
 	   	type: Schema.Types.ObjectId,
+	   	// blogPost refers to the blogPost model in the blogPost.js file
 	   	ref: 'blogPost'
 	}]
 });

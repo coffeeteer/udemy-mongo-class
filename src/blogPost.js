@@ -6,6 +6,7 @@ const BlogPostSchema = new Schema({
 	content: String,
 	comments: [{ 
 		type: Schema.Types.ObjectId,
+		// 'ref' refers to comment.js comment model
 		ref:'comment'
 	}]
 });
