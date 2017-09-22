@@ -24,6 +24,13 @@ UserSchema.virtual('postCount').get(function() {
 	return this.posts.length;
 });
 
+//Mongoose Middleware
+User.Schema.pre('remove', function() {
+	const BlogPost = mongoose.model('blogPost');
+	// this === joe
+
+});
+
 const User = mongoose.model('user', UserSchema);
 
 module.exports =  User;
