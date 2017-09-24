@@ -25,10 +25,12 @@ UserSchema.virtual('postCount').get(function() {
 });
 
 //Mongoose Middleware
-User.Schema.pre('remove', function() {
+User.Schema.pre('remove', function(next) {
 	const BlogPost = mongoose.model('blogPost');
 	// this === joe
 
+	BlogPost.remove({_id: {$in: this.blogPosts}})
+		.then(() => next());
 });
 
 const User = mongoose.model('user', UserSchema);
