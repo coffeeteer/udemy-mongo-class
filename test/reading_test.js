@@ -32,7 +32,16 @@ describe('reading users out of the database', () => {
 	});
 
 	//Query Modifiers
-	it('can skip and limit the result set', () => {
-		User.find({}).skip(1).limit(2)
+	it('can skip and limit the result set', (done) => {
+		User.find({})
+			.sort({ name: 1 })
+			.skip(1)
+			.limit(2)
+			.then((users) => {
+				assert(users.length === 2)
+				assert(users[0].name === 'Joe');
+				assert(users[1].name === 'Maria');
+				done();
+			});
 	});
 });
